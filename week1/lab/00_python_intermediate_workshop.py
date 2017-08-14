@@ -225,15 +225,15 @@ API key: http://bit.ly/myechonest
 '''
 
 # request data from the Echo Nest API
-r = requests.get('http://developer.echonest.com/api/v4/artist/top_hottt?api_key=KBGUPZPJZS9PHWNIN&format=json')
+r = requests.get('http://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=d28cb3126eae332c6279f9dedf4bb830%3A10%3A64325990&format=json')
 r.text          # looks like a dictionary
 type(r.text)    # actually stored as a string
 r.json()        # decodes JSON
 type(r.json())  # JSON can be represented as a dictionary
 top = r.json()  # store that dictionary
 
-# store the artist data
-artists = top['response']['artists']    # list of 15 dictionaries
+# store the book data
+books = top['results']['books']    # list of 15 dictionaries
 
-# create a list of artist names only
-names = [artist['name'] for artist in artists]  # can iterate through list to access dictionaries
+# create a list of book titles only
+titles = [book['title'] for book in books]  # can iterate through list to access dictionaries
