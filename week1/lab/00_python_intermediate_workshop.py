@@ -220,8 +220,7 @@ How to interact with a REST API:
 - Web console is sometimes available (allows you to explore an API)
 
 API Providers: https://apigee.com/providers
-Echo Nest API Console: https://apigee.com/console/echonest
-API key: http://bit.ly/myechonest
+Echo Nest API Console: https://apigee.com/resources/nytimes
 '''
 
 # request data from the Echo Nest API
