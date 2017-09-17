@@ -15,8 +15,9 @@ def load_train(train_path, image_size, classes):
     for fld in classes:   # assuming data directory has a separate folder for each class, and that each folder is named after the class
         index = classes.index(fld)
         print('Loading {} files (Index: {})'.format(fld, index))
-        path = os.path.join(train_path, fld, '*g')
+        path = os.path.join(train_path, (fld + '*g'))
         files = glob.glob(path)
+        # print(files)
         for fl in files:
             image = cv2.imread(fl)
             image = cv2.resize(image, (image_size, image_size), cv2.INTER_LINEAR)
