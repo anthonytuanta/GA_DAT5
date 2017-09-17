@@ -2,6 +2,7 @@ import os
 import glob
 import numpy as np
 import cv2
+import shutil
 from sklearn.utils import shuffle
 
 
@@ -10,6 +11,22 @@ def load_train(train_path, image_size, classes):
     labels = []
     ids = []
     cls = []
+    
+    print('Setting up folders and organizing files...')
+    
+    try:
+        os.makedirs(train_path+classes[0])
+        os.makedirs(train_path+classes[1])
+    except:
+        pass
+    
+    files = [x for x in os.listdir(train_path) if x.endswith(".jpg")]
+
+    for f in files:
+        if f.startswith(classes[0]):
+            shutil.move(train_path+f, train_path+classes[0])
+        elif f.startswith(classes[1]):
+            shutil.move(train_path+f, train_path+classes[1])
 
     print('Reading training images')
     for fld in classes:   # assuming data directory has a separate folder for each class, and that each folder is named after the class
